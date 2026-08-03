@@ -326,13 +326,18 @@ footer .logo{margin-bottom:12px;color:var(--txt)}
 
 .modal-box{
     width:min(560px,95vw);
-    background:#111;
+    background:linear-gradient(180deg,#181818,#111);
     border:1px solid rgba(212,175,55,.35);
     border-radius:22px;
     padding:28px;
     text-align:center;
     position:relative;
     animation:zoom .25s ease;
+    overflow:hidden;
+
+    box-shadow:
+    0 25px 80px rgba(0,0,0,.75),
+    0 0 35px rgba(212,175,55,.18);
 }
 
 @keyframes zoom{
@@ -475,7 +480,9 @@ footer .logo{margin-bottom:12px;color:var(--txt)}
     <img id="mImg" class="modal-img">
 
     <h2 id="mTitle"></h2>
-
+<div class="mStars">
+⭐⭐⭐⭐⭐ <span>4.9/5</span>
+</div>
     <div class="modal-price" id="mPrice"></div>
 
     <div class="modal-info">
