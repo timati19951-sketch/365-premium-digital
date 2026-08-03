@@ -225,6 +225,88 @@ footer .logo{margin-bottom:12px;color:var(--txt)}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* ========= MODAL PRODUCTO ========= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.82);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:min(560px,95vw);
+    background:#111;
+    border:1px solid rgba(212,175,55,.35);
+    border-radius:22px;
+    padding:28px;
+    text-align:center;
+    position:relative;
+    animation:zoom .25s ease;
+}
+
+@keyframes zoom{
+    from{
+        opacity:0;
+        transform:scale(.92);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.modal-close{
+    position:absolute;
+    right:16px;
+    top:16px;
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:50%;
+    background:#1b1b1b;
+    color:#fff;
+    cursor:pointer;
+    font-size:20px;
+}
+
+.modal-img{
+    width:220px;
+    max-width:100%;
+    margin:auto;
+    display:block;
+}
+
+.modal-price{
+    font-size:34px;
+    color:#d4af37;
+    font-weight:800;
+    margin:18px 0;
+}
+
+.modal-info{
+    text-align:left;
+    margin:20px 0;
+    line-height:1.8;
+}
+
+#mDesc{
+    text-align:left;
+    margin:20px 0;
+    padding-left:20px;
+}
+
+#mDesc li{
+    margin-bottom:8px;
+}
 </style>
 </head>
 <body>
@@ -302,7 +384,32 @@ footer .logo{margin-bottom:12px;color:var(--txt)}
 </aside>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<!-- MODAL PRODUCTO -->
+<div id="productModal" class="modal">
+  <div class="modal-box">
 
+    <button class="modal-close" onclick="closeProduct()">✕</button>
+
+    <img id="mImg" class="modal-img">
+
+    <h2 id="mTitle"></h2>
+
+    <div class="modal-price" id="mPrice"></div>
+
+    <div class="modal-info">
+        <p><strong>Duración:</strong> <span id="mDuration"></span></p>
+        <p><strong>Garantía:</strong> <span id="mWarranty"></span></p>
+        <p><strong>Entrega:</strong> <span id="mDelivery"></span></p>
+    </div>
+
+    <ul id="mDesc"></ul>
+
+    <button id="mBuy" class="add">
+        Añadir al carrito
+    </button>
+
+  </div>
+</div>
 <script>
 /* ====== CONFIGURA AQUÍ TU NÚMERO (con prefijo, sin + ni espacios) ====== */
 const WHATSAPP = "111111111";
@@ -538,8 +645,40 @@ $('#wa').addEventListener('click', () => {
 
 $('#year').textContent = new Date().getFullYear();
 function openProduct(id){
-    alert(id);
+
+    const p = PRODUCTS.find(x => x.id === id);
+    if(!p) return;
+
+    document.getElementById("mImg").src = IMG(p.id);
+    document.getElementById("mTitle").textContent = p.n;
+    document.getElementById("mPrice").textContent = eur(p.p);
+
+    document.getElementById("mDuration").textContent = "1 año";
+    document.getElementById("mWarranty").textContent = "1 mes";
+    document.getElementById("mDelivery").textContent = "Entrega inmediata";
+
+    document.getElementById("mDesc").innerHTML = `
+        <li>Cuenta Premium.</li>
+        <li>Acceso completo.</li>
+        <li>Soporte durante la garantía.</li>
+    `;
+
+    document.getElementById("mBuy").onclick = () => {
+        closeProduct();
+        add(p.id);
+    };
+
+    document.getElementById("productModal").classList.add("show");
 }
+
+function closeProduct(){
+    document.getElementById("productModal").classList.remove("show");
+}
+
+document.getElementById("productModal").addEventListener("click",e=>{
+    if(e.target.id==="productModal") closeProduct();
+});
+
 render();
 </script>
 </body>
