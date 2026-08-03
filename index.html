@@ -120,13 +120,21 @@ section{padding:96px 0;scroll-margin-top:56px}
 .pc.out{opacity:.5}
 
 /* ---------- PEDESTAL / IMAGEN ---------- */
-.ped{position:relative;margin:0 auto 14px;width:100%;max-width:200px;aspect-ratio:1/1;display:grid;place-items:center;border-radius:14px;overflow:hidden}
+.ped{position:relative;margin:0 auto 14px;width:100%;max-width:235px;aspect-ratio:1/1;display:grid;place-items:center;border-radius:14px;overflow:hidden}
 .ped-glow{
   position:absolute;inset:0;z-index:0;pointer-events:none;
   background:radial-gradient(circle at 50% 42%,var(--bc),transparent 66%);
   filter:blur(20px);opacity:.35;
 }
-.ped-img{position:relative;z-index:2;width:100%;height:100%;object-fit:cover;font-size:0;color:transparent;transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.ped-img{
+    position:relative;
+    z-index:2;
+    width:112%;
+    height:112%;
+    margin:-6%;
+    object-fit:contain;
+    transition:.35s;
+}
 .pc:hover .ped-img{transform:scale(1.06)}
 .ped-fb{
   position:absolute;z-index:2;display:grid;place-items:center;width:44%;aspect-ratio:1;border-radius:24%;
