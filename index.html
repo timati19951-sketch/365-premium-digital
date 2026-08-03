@@ -95,7 +95,12 @@ section{padding:96px 0;scroll-margin-top:56px}
 
 /* ---------- GRID PRODUCTOS ---------- */
 .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
-@media(max-width:520px){.grid{grid-template-columns:repeat(2,1fr);gap:12px}}
+@media (max-width:768px){
+    .grid{
+        grid-template-columns:1fr;
+        gap:16px;
+    }
+}
 .pc{
   position:relative;padding:20px 16px 18px;border-radius:var(--r);
   background:linear-gradient(180deg,#0e0e10,#08080a);border:1px solid var(--line);
