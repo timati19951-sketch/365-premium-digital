@@ -172,20 +172,29 @@ section{padding:96px 0;scroll-margin-top:56px}
 .old{font-size:13px;color:var(--mut);text-decoration:line-through}
 .add{
     width:100%;
-    padding:14px;
-    border-radius:16px;
-    border:1px solid rgba(212,175,55,.45);
-    background:linear-gradient(180deg,#2b2312,#1b160d);
-    color:#f5d77c;
-    font-size:16px;
+    padding:16px;
+    border-radius:18px;
+    border:1px solid rgba(255,215,100,.35);
+
+    background:linear-gradient(180deg,#3a2f18,#241d11);
+
+    color:#ffd977;
+    font-size:17px;
     font-weight:700;
+    letter-spacing:.3px;
+
     cursor:pointer;
-    transition:.3s;
+
+    transition:all .30s ease;
 }
 .add:hover{
-    transform:translateY(-2px);
-    background:linear-gradient(180deg,#3a2f18,#241d11);
-    box-shadow:0 10px 30px rgba(212,175,55,.28);
+    transform:translateY(-3px) scale(1.02);
+
+    background:linear-gradient(180deg,#4b3d1d,#2b2113);
+
+    box-shadow:
+        0 12px 35px rgba(212,175,55,.35),
+        inset 0 1px 0 rgba(255,255,255,.12);
 }
 .add:disabled{
     opacity:.45;
