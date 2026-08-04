@@ -395,7 +395,29 @@ footer .logo{margin-bottom:12px;color:var(--txt)}
 
     line-height:2;
 }
+.mBadges{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    justify-content:center;
+    margin:18px 0;
+}
 
+.mBadges span{
+    background:rgba(212,175,55,.12);
+    border:1px solid rgba(212,175,55,.35);
+    color:#f5d36b;
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:600;
+    transition:.25s;
+}
+
+.mBadges span:hover{
+    background:rgba(212,175,55,.22);
+    transform:translateY(-2px);
+}
 .modal-info p{
     margin:10px 0;
     font-size:15px;
@@ -505,7 +527,12 @@ footer .logo{margin-bottom:12px;color:var(--txt)}
 ⭐⭐⭐⭐⭐ <span>4.9/5</span>
 </div>
     <div class="modal-price" id="mPrice"></div>
-
+<div class="mStatus" id="mStatus"></div>
+<div class="mBadges">
+    <span>⚡ Entrega inmediata</span>
+    <span>🛡️ Garantía incluida</span>
+    <span>💳 Pago seguro</span>
+</div>
     <div class="modal-info">
         <p><strong>Duración:</strong> <span id="mDuration"></span></p>
         <p><strong>Garantía:</strong> <span id="mWarranty"></span></p>
