@@ -581,7 +581,26 @@ const WHATSAPP = "111111111";
 const IMG = id => `img/${id}.png`;
 
 const PRODUCTS = [
- {id:"netflix", n:"Netflix", c:"Streaming", p:5.99, o:12.99, bc:"#e50914", stock:true},
+ {
+    id:"netflix",
+    n:"Netflix",
+    c:"Streaming",
+    p:5.99,
+    o:12.99,
+
+    duration:"12 meses",
+    warranty:"30 días",
+    delivery:"Entrega inmediata",
+
+    description:[
+        "Cuenta Premium",
+        "Resolución 4K Ultra HD",
+        "4 pantallas simultáneas",
+        "Compatible con Smart TV, móvil y PC"
+    ],
+
+    
+},
   {id:"spotify",     n:"Spotify",        c:"Música",    p:4.99,  o:10.99, bc:"#1db954", stock:false},
   {id:"disney_plus",      n:"Disney+",        c:"Streaming", p:4.49,  o:8.99,  bc:"#0f4bd8", stock:true},
   {id:"hbo_max",         n:"HBO Max",        c:"Streaming", p:4.29,  o:9.99,  bc:"#7b2ff7", stock:true},
@@ -797,19 +816,14 @@ function openProduct(id){
     const p = PRODUCTS.find(x => x.id === id);
     if(!p) return;
 
-    document.getElementById("mImg").src = IMG(p.id);
-    document.getElementById("mTitle").textContent = p.n;
-    document.getElementById("mPrice").textContent = eur(p.p);
+    document.getElementById("mDuration").textContent = p.duration || "";
+document.getElementById("mWarranty").textContent = p.warranty || "";
+document.getElementById("mDelivery").textContent = p.delivery || "";
 
-    document.getElementById("mDuration").textContent = "1 año";
-    document.getElementById("mWarranty").textContent = "1 mes";
-    document.getElementById("mDelivery").textContent = "Entrega inmediata";
-
-    document.getElementById("mDesc").innerHTML = `
-        <li>Cuenta Premium.</li>
-        <li>Acceso completo.</li>
-        <li>Soporte durante la garantía.</li>
-    `;
+document.getElementById("mDesc").innerHTML =
+    (p.description || [])
+        .map(text => `<li>${text}</li>`)
+        .join("");
 
     document.getElementById("mBuy").onclick = () => {
         closeProduct();
