@@ -457,6 +457,62 @@ overflow-x:hidden;
 }
 
 #mDesc li{
+.review-divider{
+    border:none;
+    height:1px;
+    background:rgba(255,255,255,.08);
+    margin:28px 0;
+}
+
+.reviews{
+    text-align:left;
+    margin-bottom:28px;
+}
+
+.reviews h3{
+    text-align:center;
+    font-size:18px;
+    margin-bottom:20px;
+    color:var(--gold);
+}
+
+.review{
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:16px;
+    padding:14px 16px;
+    margin-bottom:14px;
+}
+
+.review-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:8px;
+}
+
+.review-user{
+    font-weight:700;
+    color:#fff;
+}
+
+.review-date{
+    font-size:12px;
+    color:#9a9a9a;
+}
+
+.review-verified{
+    color:#5cff8d;
+    font-size:13px;
+    margin-bottom:8px;
+}
+
+.review-comment{
+    color:#d7d7d7;
+    font-size:14px;
+    line-height:1.6;
+    font-style:italic;
+}
     margin-bottom:8px;
 }
 </style>
@@ -562,6 +618,15 @@ overflow-x:hidden;
     </div>
 
     <ul id="mDesc"></ul>
+    <hr class="review-divider">
+
+<div class="reviews">
+
+    <h3>⭐⭐⭐⭐⭐ Opiniones verificadas</h3>
+
+    <div id="mReviews"></div>
+
+</div>
 
     <button id="mBuy" class="add">
         Añadir al carrito
@@ -595,6 +660,7 @@ const PRODUCTS = [
         "4 pantallas simultáneas",
         "Compatible con Smart TV, móvil y PC"
     ],
+    
 
     
 },
@@ -629,6 +695,46 @@ const PRODUCTS = [
 
 {id:"alight_motion", n:"Alight Motion", c:"Edición", p:4.99, o:11.99, bc:"#00d084", stock:true},
 ];
+const REVIEWS = [
+{user:"Gam****24",date:"Hace 2 días",comment:""},
+{user:"Dark****ES",date:"Hace 5 días",comment:"Todo perfecto, recibido al instante."},
+{user:"XxPla****YT",date:"Hace 1 semana",comment:""},
+{user:"Neo****89",date:"Hace 3 días",comment:"Muy recomendable."},
+{user:"Cry****_",date:"Hace 2 semanas",comment:""},
+{user:"Play****Pro",date:"Hace 4 días",comment:"Todo funcionando correctamente."},
+{user:"Mast****77",date:"Hace 6 días",comment:""},
+{user:"Fox****HD",date:"Hace 1 día",comment:"Muy rápido y sencillo."},
+{user:"Leg****One",date:"Hace 3 semanas",comment:""},
+{user:"Nigh****TV",date:"Hace 8 días",comment:"Excelente servicio."}
+];
+function randomReviews(){
+
+    const list=[...REVIEWS]
+        .sort(()=>Math.random()-0.5)
+        .slice(0,3);
+
+    document.getElementById("mReviews").innerHTML=list.map(r=>`
+
+<div class="review">
+
+<div class="review-top">
+<div class="review-user">⭐⭐⭐⭐⭐ ${r.user}</div>
+<div class="review-date">${r.date}</div>
+</div>
+
+<div class="review-verified">
+🟢 Compra verificada
+</div>
+
+${r.comment
+? `<div class="review-comment">"${r.comment}"</div>`
+: ""}
+
+</div>
+
+`).join("");
+
+}
 const $  = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 const eur = n => n.toFixed(2).replace('.', ',') + ' €';
@@ -848,7 +954,7 @@ document.getElementById("mDesc").innerHTML =
         closeProduct();
         add(p.id);
     };
-
+randomReviews();
     document.getElementById("productModal").classList.add("show");
 }
 
