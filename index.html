@@ -793,12 +793,24 @@ function openProduct(id){
 document.getElementById("mTitle").textContent = p.n;
 document.getElementById("mPrice").textContent = eur(p.p);
 
-    document.getElementById("mDuration").textContent = p.duration || "";
-document.getElementById("mWarranty").textContent = p.warranty || "";
-document.getElementById("mDelivery").textContent = p.delivery || "";
+document.getElementById("mDuration").textContent =
+    p.duration || "12 meses";
+
+document.getElementById("mWarranty").textContent =
+    p.warranty || "30 días";
+
+document.getElementById("mDelivery").textContent =
+    p.delivery || "Entrega inmediata";
 
 document.getElementById("mDesc").innerHTML =
-    (p.description || [])
+    (
+    p.description || [
+        "Cuenta Premium",
+        "Acceso completo",
+        "Compatible con todos los dispositivos",
+        "Soporte durante la garantía"
+    ]
+)
         .map(text => `<li>${text}</li>`)
         .join("");
 
