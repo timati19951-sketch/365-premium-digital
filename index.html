@@ -815,6 +815,9 @@ function openProduct(id){
 
     const p = PRODUCTS.find(x => x.id === id);
     if(!p) return;
+    document.getElementById("mImg").src = IMG(p.id);
+document.getElementById("mTitle").textContent = p.n;
+document.getElementById("mPrice").textContent = eur(p.p);
 
     document.getElementById("mDuration").textContent = p.duration || "";
 document.getElementById("mWarranty").textContent = p.warranty || "";
