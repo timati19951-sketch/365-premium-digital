@@ -463,7 +463,69 @@ overflow-x:hidden;
     background:rgba(255,255,255,.08);
     margin:28px 0;
 }
+/* ========= RATING PREMIUM ========= */
 
+.mRating{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    margin:12px 0 20px;
+}
+
+.stars{
+    font-size:28px;
+    letter-spacing:4px;
+    font-weight:700;
+
+    background:linear-gradient(
+        180deg,
+        #fff6d2 0%,
+        #ffe48d 20%,
+        #d4af37 55%,
+        #8b6b15 100%
+    );
+
+background-clip:text;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+    -webkit-text-fill-color:transparent;
+
+    text-shadow:
+        0 0 8px rgba(212,175,55,.30),
+        0 2px 10px rgba(0,0,0,.45);
+}
+
+.ratingText{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    font-size:15px;
+    color:#cfcfcf;
+
+    font-weight:500;
+}
+
+#mRatingScore{
+
+    font-size:20px;
+    font-weight:700;
+    color:#ffffff;
+
+}
+
+.ratingDot{
+
+    color:#666;
+
+}
+
+#mRatingCount{
+
+    color:#9a9a9a;
+
+}
 .reviews{
     text-align:left;
     margin-bottom:28px;
@@ -515,6 +577,60 @@ overflow-x:hidden;
 }
     margin-bottom:8px;
 }
+.review-comment{
+    color:#d7d7d7;
+    font-size:14px;
+    line-height:1.6;
+    font-style:italic;
+    margin-bottom:8px;
+}
+
+/* ===== BADGES PREMIUM ===== */
+
+.mBadges{
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:14px;
+    margin:24px 0;
+
+}
+
+.badge{
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 18px;
+    border-radius:999px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(212,175,55,.22);
+    color:#ececec;
+    font-size:14px;
+    font-weight:600;
+    transition:.25s;
+
+}
+
+.badge:hover{
+
+    transform:translateY(-2px);
+    border-color:rgba(212,175,55,.45);
+    background:rgba(255,255,255,.05);
+
+}
+
+.badgeIcon{
+
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:linear-gradient(#ffe38d,#d4af37);
+    box-shadow:0 0 10px rgba(212,175,55,.5);
+
+}
+
 </style>
 </head>
 <body>
@@ -601,16 +717,40 @@ overflow-x:hidden;
     <img id="mImg" class="modal-img">
 
     <h2 id="mTitle"></h2>
-<div class="mStars">
-⭐⭐⭐⭐⭐ <span>5/5</span>
+<div class="mRating">
+
+    <div class="stars">
+        ★★★★★
+    </div>
+
+    <div class="ratingText">
+        <span id="mRatingScore">5.0</span>
+        <span class="ratingDot">•</span>
+        <span id="mRatingCount">2.843 valoraciones</span>
+    </div>
+
 </div>
     <div class="modal-price" id="mPrice"></div>
     <div class="mStock" id="mStock"></div>
 <div class="mStatus" id="mStatus"></div>
+
 <div class="mBadges">
-    <span>⚡ Entrega inmediata</span>
-    <span>🛡️ Garantía incluida</span>
-    <span>💳 Pago seguro</span>
+
+    <span class="badge">
+        <div class="badgeIcon"></div>
+        Entrega inmediata
+    </span>
+
+    <span class="badge">
+        <div class="badgeIcon"></div>
+        Garantía incluida
+    </span>
+
+    <span class="badge">
+        <div class="badgeIcon"></div>
+        Pago seguro
+    </span>
+
 </div>
     <div class="modal-info">
         <p><strong>Duración:</strong> <span id="mDuration"></span></p>
